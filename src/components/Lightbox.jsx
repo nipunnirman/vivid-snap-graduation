@@ -110,7 +110,6 @@ export default function Lightbox({ isOpen, image, imagesList, onClose, onPrev, o
           width: calc(100% - 80px);
           max-width: 900px;
           padding: 12px 24px;
-          border-radius: 40px;
           z-index: 1010;
         }
 
@@ -132,7 +131,6 @@ export default function Lightbox({ isOpen, image, imagesList, onClose, onPrev, o
           color: var(--text-secondary);
           cursor: pointer;
           padding: 6px;
-          border-radius: 50%;
           transition: all 0.3s ease;
         }
 
@@ -149,13 +147,12 @@ export default function Lightbox({ isOpen, image, imagesList, onClose, onPrev, o
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: rgba(18, 18, 24, 0.5);
+          background: rgba(25, 25, 30, 0.6);
           border: 1px solid var(--glass-border);
           color: var(--text-primary);
           cursor: pointer;
           width: 50px;
           height: 50px;
-          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -164,9 +161,10 @@ export default function Lightbox({ isOpen, image, imagesList, onClose, onPrev, o
         }
 
         .nav-btn:hover {
-          background: var(--accent-purple);
-          border-color: var(--accent-purple);
-          box-shadow: 0 0 15px rgba(157, 80, 255, 0.4);
+          background: var(--accent-yellow);
+          border-color: var(--accent-yellow);
+          box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
+          color: #ffffff;
         }
 
         .prev-btn {
@@ -189,7 +187,6 @@ export default function Lightbox({ isOpen, image, imagesList, onClose, onPrev, o
           max-width: 100%;
           max-height: 80vh;
           object-fit: contain;
-          border-radius: 8px;
           box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 

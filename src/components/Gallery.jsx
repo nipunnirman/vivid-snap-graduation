@@ -201,18 +201,27 @@ export default function Gallery({ onSelectImage, favorites }) {
         }
 
         .gallery-controls {
+          position: sticky;
+          top: 15px;
+          z-index: 50;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 16px 24px;
-          margin-bottom: 40px;
+          padding: 12px 24px;
+          margin-bottom: 30px;
           flex-wrap: wrap;
           gap: 16px;
+          border-radius: 40px !important; /* Forces rounded shape */
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid var(--glass-border);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
         }
 
         .search-box {
           position: relative;
-          width: 250px;
+          width: 200px;
         }
 
         .search-icon {
@@ -225,14 +234,14 @@ export default function Gallery({ onSelectImage, favorites }) {
 
         .search-box input {
           width: 100%;
-          padding: 10px 14px 10px 42px;
+          padding: 8px 14px 8px 38px;
           background: rgba(0, 0, 0, 0.02);
           border: 1px solid var(--glass-border);
-          border-radius: 30px;
+          border-radius: 30px !important;
           color: var(--text-primary);
           outline: none;
           font-family: var(--font-sans);
-          font-size: 14px;
+          font-size: 13px;
           transition: all 0.3s ease;
         }
 
@@ -245,7 +254,7 @@ export default function Gallery({ onSelectImage, favorites }) {
         .category-tabs {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
           flex-wrap: wrap;
         }
 
@@ -253,10 +262,10 @@ export default function Gallery({ onSelectImage, favorites }) {
           background: none;
           border: none;
           color: var(--text-secondary);
-          padding: 8px 18px;
-          border-radius: 20px;
+          padding: 8px 16px;
+          border-radius: 30px !important;
           cursor: pointer;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
           transition: all 0.3s ease;
         }
@@ -274,10 +283,10 @@ export default function Gallery({ onSelectImage, favorites }) {
         .layout-toggle {
           display: flex;
           align-items: center;
-          gap: 6px;
-          background: rgba(255, 255, 255, 0.03);
-          padding: 4px;
-          border-radius: 10px;
+          gap: 4px;
+          background: rgba(0, 0, 0, 0.02);
+          padding: 3px;
+          border-radius: 20px !important;
           border: 1px solid var(--glass-border);
         }
 
@@ -285,12 +294,13 @@ export default function Gallery({ onSelectImage, favorites }) {
           background: none;
           border: none;
           color: var(--text-secondary);
-          width: 30px;
-          height: 30px;
-          border-radius: 6px;
+          width: 28px;
+          height: 28px;
+          border-radius: 14px !important;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
+          font-size: 12px;
         }
 
         .layout-btn.active, .layout-btn:hover {
@@ -301,7 +311,7 @@ export default function Gallery({ onSelectImage, favorites }) {
         /* Gallery Grid Layouts */
         .gallery-grid {
           display: grid;
-          grid-gap: 16px;
+          grid-gap: 8px; /* Tighter gap for box grid style */
           margin-bottom: 40px;
         }
 
@@ -319,10 +329,9 @@ export default function Gallery({ onSelectImage, favorites }) {
 
         .gallery-item-card {
           position: relative;
-          border-radius: 12px;
           overflow: hidden;
           cursor: pointer;
-          aspect-ratio: 4/5;
+          aspect-ratio: 1/1; /* Square box shape */
           background-color: var(--bg-secondary);
           border: 1px solid var(--glass-border);
         }
@@ -331,11 +340,11 @@ export default function Gallery({ onSelectImage, favorites }) {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: transform 0.4s ease;
         }
 
         .gallery-item-card:hover .gallery-img {
-          transform: scale(1.04);
+          transform: scale(1.02);
         }
 
         .item-overlay {
@@ -343,8 +352,8 @@ export default function Gallery({ onSelectImage, favorites }) {
           bottom: 0;
           left: 0;
           right: 0;
-          background: linear-gradient(to top, rgba(10, 10, 12, 0.9) 0%, rgba(10, 10, 12, 0) 100%);
-          padding: 20px 16px 12px;
+          background: rgba(0, 0, 0, 0.55);
+          padding: 8px 12px;
           opacity: 0;
           transition: opacity 0.3s ease;
           display: flex;
@@ -357,14 +366,14 @@ export default function Gallery({ onSelectImage, favorites }) {
         }
 
         .photo-label {
-          color: var(--text-primary);
-          font-size: 13px;
+          color: #ffffff;
+          font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.05em;
         }
 
         .fav-badge {
-          filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+          filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
         }
 
         .no-results {
@@ -372,7 +381,7 @@ export default function Gallery({ onSelectImage, favorites }) {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 80px 40px;
+          padding: 60px 20px;
           text-align: center;
         }
 
@@ -418,8 +427,18 @@ export default function Gallery({ onSelectImage, favorites }) {
         }
 
         @media (max-width: 480px) {
+          /* Force exactly 2 columns on mobile screens so it displays 2 horizontal photos side-by-side */
           .cols-2, .cols-3, .cols-4 {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .gallery-grid {
+            grid-gap: 6px;
+          }
+          .gallery-controls {
+            padding: 12px;
+          }
+          .category-tabs {
+            justify-content: center;
           }
         }
       `}</style>

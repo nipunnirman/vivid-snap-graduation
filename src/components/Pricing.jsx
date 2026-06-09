@@ -1,21 +1,19 @@
 import React from 'react';
-import { Check, Info, Sparkles, Users, HeartHandshake } from 'lucide-react';
 
-export default function Pricing({ onSelectPackage }) {
+export default function Pricing() {
   const packages = [
     {
       id: 'individual',
       name: 'Individual Package',
       price: '10,000 LKR',
-      icon: <Sparkles className="package-icon" size={24} />,
+      photo: '/Highlights/RJN00272.jpg',
+      details: 'in our studio or selected location',
       features: [
         'Stunning casual photo session',
         'Professionally edited softcopies',
         'High-resolution digital downloads',
         '1-hour coverage at selected location'
-      ],
-      tag: 'Most Popular',
-      color: 'var(--accent-yellow)'
+      ]
     },
     {
       id: 'graduate',
@@ -23,248 +21,243 @@ export default function Pricing({ onSelectPackage }) {
       subtitle: '(Two and More Graduates)',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
-      icon: <Users className="package-icon" size={24} />,
+      photo: '/Highlights/RJN02210.jpg',
+      details: 'group & individual portrait variations',
       features: [
         'Stunning casual photo session',
         'Professionally edited softcopies',
         'Includes natural interactions and shared moments between the graduates',
         'Group & individual portrait variations'
-      ],
-      tag: 'Best Value',
-      color: 'var(--text-primary)'
+      ]
     },
     {
       id: 'lovestory',
       name: 'Love Story',
       price: '14,000 LKR',
-      icon: <HeartHandshake className="package-icon" size={24} />,
+      photo: '/Highlights/RJN01978.jpg',
+      details: 'multi-location option & extended time',
       features: [
         'Romantic and relaxed casual photo session',
         'Professionally edited softcopies',
         'Perfect for couples celebrating convocation together',
         'Extended session time with multi-location option'
-      ],
-      tag: 'Premium Choice',
-      color: 'var(--accent-yellow)'
+      ]
     }
   ];
 
   return (
     <section id="pricing" className="pricing-section">
-      <div className="ambient-glow-1" style={{ top: '20%', right: '-10%' }}></div>
-      <div className="ambient-glow-2" style={{ bottom: '10%', left: '-10%' }}></div>
-
       <div className="pricing-header">
-        <h2 className="serif-text section-title">PACKAGES & <span className="highlight-text">PRICING</span></h2>
-        <p className="section-subtitle">Choose the perfect package for your graduation convocation celebration.</p>
+        <h2 className="serif-text package-section-title">Photography Packages</h2>
+        <div className="package-tags">
+          <span>CONVOCATION</span> / <span>GRADUATION</span> / <span>CANDID PORTRAITS</span>
+        </div>
       </div>
 
-      <div className="pricing-grid">
-        {packages.map((pkg) => (
-          <div key={pkg.id} className="pricing-card glass-panel fade-in">
-            {pkg.tag && (
-              <span className="card-badge" style={{ backgroundColor: pkg.color, color: pkg.color === 'var(--text-primary)' ? '#fff' : '#000' }}>
-                {pkg.tag}
-              </span>
-            )}
-            
-            <div className="card-header">
-              <div className="icon-wrapper" style={{ color: pkg.color, boxShadow: `0 0 20px ${pkg.color === 'var(--text-primary)' ? 'rgba(0,0,0,0.05)' : pkg.color + '15'}` }}>
-                {pkg.icon}
+      <div className="alternating-packages-list">
+        {packages.map((pkg, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div key={pkg.id} className={`package-row ${isEven ? 'row-normal' : 'row-reverse'}`}>
+              
+              {/* Info Card Block */}
+              <div className="package-card-panel glass-dark-panel fade-in">
+                <div className="panel-header">
+                  <h3 className="serif-text pkg-title">{pkg.name}</h3>
+                  {pkg.subtitle && <span className="pkg-subtitle">{pkg.subtitle}</span>}
+                  <p className="pkg-details-desc">{pkg.details}</p>
+                </div>
+                
+                <ul className="pkg-features">
+                  {pkg.features.slice(0, 3).map((feat, idx) => (
+                    <li key={idx}>{feat}</li>
+                  ))}
+                </ul>
+
+                <div className="panel-footer">
+                  <span className="pkg-price-amount">{pkg.price}</span>
+                  {pkg.priceSuffix && <span className="pkg-price-suffix">{pkg.priceSuffix}</span>}
+                </div>
               </div>
-              <h3 className="serif-text package-title">{pkg.name}</h3>
-              {pkg.subtitle && <p className="package-subtitle">{pkg.subtitle}</p>}
-              <div className="package-price">
-                <span className="price-amount">{pkg.price}</span>
-                {pkg.priceSuffix && <span className="price-suffix">{pkg.priceSuffix}</span>}
+
+              {/* Photo Block */}
+              <div className="package-photo-panel fade-in">
+                <img src={pkg.photo} alt={pkg.name} className="pkg-image" />
               </div>
+
             </div>
-
-            <hr className="divider" />
-
-            <ul className="features-list">
-              {pkg.features.map((feat, idx) => (
-                <li key={idx} className="feature-item">
-                  <Check size={18} className="check-icon" style={{ color: pkg.color }} />
-                  <span>{feat}</span>
-                </li>
-              ))}
-            </ul>
-
-            <button 
-              className="btn btn-primary btn-block" 
-              style={{ background: pkg.color === 'var(--text-primary)' ? '#111827' : `linear-gradient(135deg, ${pkg.color}, rgba(0,0,0,0))` }}
-              onClick={() => onSelectPackage(pkg.name)}
-            >
-              Inquire Package
-            </button>
-          </div>
-        ))}
-      </div>
-
-      <div className="pricing-notes glass-panel">
-        <Info size={20} className="info-icon" />
-        <p>
-          Need a custom photoshoot package, specific locations, or prints? Let's discuss your custom requirements! 
-          <a href="#contact" className="notes-link"> Get in touch with us</a>
-        </p>
+          );
+        })}
       </div>
 
       <style>{`
         .pricing-section {
-          position: relative;
+          padding: 40px 16px;
         }
 
         .pricing-header {
           text-align: center;
-          margin-bottom: 50px;
+          margin-bottom: 40px;
         }
 
-        .pricing-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 30px;
-          margin-bottom: 50px;
-        }
-
-        .pricing-card {
-          position: relative;
-          padding: 40px 30px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-
-        .card-badge {
-          position: absolute;
-          top: -15px;
-          left: 50%;
-          transform: translateX(-50%);
-          color: #000;
-          font-weight: 700;
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          padding: 6px 16px;
-          border-radius: 20px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .icon-wrapper {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--glass-border);
-          margin: 0 auto 20px;
-        }
-
-        .package-title {
-          font-size: 26px;
-          margin-bottom: 4px;
-        }
-
-        .package-subtitle {
-          font-size: 13px;
-          color: var(--text-secondary);
-          margin-bottom: 12px;
-        }
-
-        .package-price {
-          margin: 16px 0;
-        }
-
-        .price-amount {
-          font-size: 32px;
-          font-weight: 700;
+        .package-section-title {
+          font-size: 36px;
+          font-weight: 600;
+          letter-spacing: -0.02em;
           color: var(--text-primary);
         }
 
-        .price-suffix {
-          font-size: 14px;
+        .package-tags {
+          font-size: 11px;
+          color: var(--text-muted);
+          font-weight: 500;
+          letter-spacing: 0.15em;
+          margin-top: 4px;
+        }
+
+        .package-tags span {
           color: var(--text-secondary);
+        }
+
+        .alternating-packages-list {
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .package-row {
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 30px;
+          align-items: stretch;
+        }
+
+        .row-reverse {
+          grid-template-columns: 1fr 1.2fr;
+        }
+
+        /* Dark Charcoal/Green Glass Card - matching design file */
+        .glass-dark-panel {
+          background: rgba(30, 35, 32, 0.95);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          color: #ffffff;
+          padding: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          border-radius: 28px !important; /* Forces rounded corner design for packages */
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Enforce rounded corners on packaging image boxes */
+        .package-photo-panel {
+          position: relative;
+          overflow: hidden;
+          border-radius: 28px !important;
+          border: 1px solid var(--glass-border);
+          aspect-ratio: 1.1/1;
+        }
+
+        .pkg-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: 28px !important;
+        }
+
+        .pkg-title {
+          font-size: 28px;
+          font-weight: 600;
+          color: #ffffff;
+          margin-bottom: 2px;
+          letter-spacing: -0.01em;
+        }
+
+        .pkg-subtitle {
+          font-size: 12px;
+          color: var(--accent-yellow);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          display: block;
+          margin-bottom: 6px;
+        }
+
+        .pkg-details-desc {
+          font-size: 12px;
+          color: rgba(255, 255, 255, 0.5);
+          margin-bottom: 20px;
+        }
+
+        .pkg-features {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.75);
+          margin-bottom: 30px;
+        }
+
+        .pkg-features li {
+          position: relative;
+          padding-left: 14px;
+        }
+
+        .pkg-features li::before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: var(--accent-yellow);
+        }
+
+        .panel-footer {
+          margin-top: auto;
+          display: flex;
+          align-items: baseline;
+        }
+
+        .pkg-price-amount {
+          font-size: 26px;
+          font-weight: 700;
+          color: #ffffff;
+        }
+
+        .pkg-price-suffix {
+          font-size: 13px;
+          color: rgba(255, 255, 255, 0.5);
           margin-left: 4px;
         }
 
-        .divider {
-          width: 100%;
-          border: 0;
-          height: 1px;
-          background: var(--glass-border);
-          margin: 24px 0;
-        }
+        /* Order layout for alternate rows */
+        .row-normal .package-card-panel { order: 1; }
+        .row-normal .package-photo-panel { order: 2; }
+        .row-reverse .package-card-panel { order: 2; }
+        .row-reverse .package-photo-panel { order: 1; }
 
-        .features-list {
-          list-style: none;
-          width: 100%;
-          text-align: left;
-          margin-bottom: 32px;
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .feature-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          font-size: 14px;
-          color: var(--text-secondary);
-        }
-
-        .check-icon {
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-
-        .btn-block {
-          width: 100%;
-          justify-content: center;
-          border: 1px solid var(--glass-border) !important;
-          transition: all 0.3s ease;
-        }
-
-        .btn-block:hover {
-          transform: scale(1.02);
-          box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
-        }
-
-        .pricing-notes {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 20px 24px;
-          justify-content: center;
-          font-size: 14px;
-        }
-
-        .info-icon {
-          color: var(--accent-yellow);
-          flex-shrink: 0;
-        }
-
-        .notes-link {
-          color: var(--accent-yellow);
-          text-decoration: none;
-          font-weight: 500;
-        }
-
-        .notes-link:hover {
-          text-decoration: underline;
-        }
-
-        @media (max-width: 992px) {
-          .pricing-grid {
-            grid-template-columns: 1fr;
-            max-width: 480px;
-            margin: 0 auto 40px;
+        @media (max-width: 768px) {
+          .package-row {
+            grid-template-columns: 1fr !important;
+            gap: 16px;
+          }
+          .package-card-panel {
+            padding: 30px 24px;
+            order: 1 !important;
+          }
+          .package-photo-panel {
+            aspect-ratio: 1.4/1;
+            order: 2 !important;
+          }
+          .package-tags {
+            font-size: 9px;
+          }
+          .package-section-title {
+            font-size: 28px;
+          }
+          .pkg-title {
+            font-size: 24px;
           }
         }
       `}</style>
