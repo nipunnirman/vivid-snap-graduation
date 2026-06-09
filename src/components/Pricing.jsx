@@ -4,313 +4,317 @@ export default function Pricing() {
   const packages = [
     {
       id: 'individual',
-      name: 'Individual Package',
+      name: 'Package One',
+      title: 'Individual Session',
       price: '10,000 LKR',
       photo: '/Highlights/RJN00272.jpg',
-      details: 'In our studio or selected location',
-      specs: '60 min session • 20 edited images • online gallery',
-      features: [
-        'Stunning casual photo session',
-        'Professionally edited softcopies',
-        'High-resolution digital downloads',
-        '1-hour coverage at selected location'
-      ]
+      details: 'In our studio • 60 minute session • 20 edited images • online gallery • print release'
     },
     {
       id: 'graduate',
-      name: 'Graduate Session',
-      subtitle: '(Two and More Graduates)',
+      name: 'Package Two',
+      title: 'Graduate Session',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
       photo: '/Highlights/RJN02210.jpg',
-      details: 'Group & individual variations',
-      specs: 'Shared moments • edited softcopies • natural interactions',
-      features: [
-        'Stunning casual photo session',
-        'Professionally edited softcopies',
-        'Includes natural interactions and shared moments between the graduates',
-        'Group & individual portrait variations'
-      ]
+      details: 'One location • 60 minute session • 20 edited images • online gallery • print release'
     },
     {
       id: 'lovestory',
-      name: 'Love Story',
+      name: 'Package Three',
+      title: 'Love Story Session',
       price: '14,000 LKR',
       photo: '/Highlights/RJN01978.jpg',
-      details: 'Multi-location option & extended time',
-      specs: 'Romantic & relaxed • edited softcopies • couples focus',
-      features: [
-        'Romantic and relaxed casual photo session',
-        'Professionally edited softcopies',
-        'Perfect for couples celebrating convocation together',
-        'Extended session time with multi-location option'
-      ]
+      details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
     }
   ];
 
   return (
-    <section id="pricing" className="pricing-section">
-      <div className="pricing-header">
-        <h2 className="serif-text package-section-title">Photography Packages</h2>
-        <div className="package-tags">
-          <span>CONVOCATION</span> / <span>GRADUATION</span> / <span>CANDID PORTRAITS</span>
+    <section id="pricing" className="pricing-section-editorial">
+      <div className="editorial-container">
+        
+        {/* Header */}
+        <div className="editorial-header">
+          <h2 className="swiss-title">Photography Packages</h2>
+          <div className="swiss-subcategories">
+            EVENTS / FASHION / CREATIVITY / WEDDINGS
+          </div>
         </div>
-      </div>
 
-      <div className="alternating-packages-list">
-        {packages.map((pkg, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <div key={pkg.id} className={`package-row ${isEven ? 'row-normal' : 'row-reverse'}`}>
-              
-              {/* Info Card Block */}
-              <div className="package-card-panel glass-dark-panel fade-in">
-                <div className="panel-header">
-                  <h3 className="serif-text pkg-title">{pkg.name}</h3>
-                  {pkg.subtitle && <span className="pkg-subtitle">{pkg.subtitle}</span>}
-                  <p className="pkg-details-desc">{pkg.details}</p>
+        {/* Staggered Pill Collages */}
+        <div className="editorial-collages-list">
+          {packages.map((pkg, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div 
+                key={pkg.id} 
+                className={`editorial-row ${isEven ? 'align-left' : 'align-right'}`}
+              >
+                {/* Olive Pill Card */}
+                <div className="olive-pill-card glass-panel fade-in">
+                  <div className="card-editorial-content">
+                    <span className="pkg-pill-label">{pkg.name}</span>
+                    <h3 className="pkg-pill-title">{pkg.title}</h3>
+                    <p className="pkg-pill-details">{pkg.details}</p>
+                    <span className="pkg-pill-price">{pkg.price}</span>
+                  </div>
                 </div>
-                
-                {/* Desktop Features List */}
-                <ul className="pkg-features desktop-only">
-                  {pkg.features.slice(0, 3).map((feat, idx) => (
-                    <li key={idx}>{feat}</li>
-                  ))}
-                </ul>
 
-                {/* Mobile Specs Summary */}
-                <p className="pkg-specs-mobile mobile-only">{pkg.specs}</p>
-
-                <div className="panel-footer">
-                  <span className="pkg-price-amount">{pkg.price}</span>
-                  {pkg.priceSuffix && <span className="pkg-price-suffix">{pkg.priceSuffix}</span>}
+                {/* Overlapping Black & White Photo cutout */}
+                <div className="overlapping-photo-wrapper fade-in">
+                  <img 
+                    src={pkg.photo} 
+                    alt={pkg.title} 
+                    className="bw-cutout-photo" 
+                  />
                 </div>
-              </div>
 
-              {/* Photo Block */}
-              <div className="package-photo-panel fade-in">
-                <img src={pkg.photo} alt={pkg.name} className="pkg-image" />
               </div>
+            );
+          })}
+        </div>
 
-            </div>
-          );
-        })}
       </div>
 
       <style>{`
-        .pricing-section {
-          padding: 30px 16px;
+        /* Off-white editorial background for pricing section */
+        .pricing-section-editorial {
+          background-color: #f3f3f1;
+          padding: 80px 24px;
+          position: relative;
+          z-index: 5;
+          overflow: visible;
         }
 
-        .pricing-header {
-          text-align: center;
-          margin-bottom: 30px;
-        }
-
-        .package-section-title {
-          font-size: 32px;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          color: var(--text-primary);
-        }
-
-        .package-tags {
-          font-size: 10px;
-          color: var(--text-muted);
-          font-weight: 500;
-          letter-spacing: 0.12em;
-          margin-top: 3px;
-        }
-
-        .package-tags span {
-          color: var(--text-secondary);
-        }
-
-        .alternating-packages-list {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-          max-width: 1000px;
+        .editorial-container {
+          max-width: 1100px;
           margin: 0 auto;
         }
 
-        .package-row {
-          display: grid;
-          grid-template-columns: 1.25fr 1fr;
-          gap: 20px;
-          align-items: stretch;
+        /* Swiss style typography */
+        .editorial-header {
+          text-align: left;
+          margin-bottom: 70px;
+          padding-left: 20px;
         }
 
-        .row-reverse {
-          grid-template-columns: 1fr 1.25fr;
+        .swiss-title {
+          font-family: var(--font-sans);
+          font-size: 52px;
+          font-weight: 700;
+          letter-spacing: -0.04em;
+          color: #111827;
+          line-height: 1.05;
         }
 
-        /* Dark Charcoal/Green Glass Card - matching design file */
-        .glass-dark-panel {
-          background: rgba(30, 35, 32, 0.95);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: #ffffff;
-          padding: 30px 36px;
+        .swiss-subcategories {
+          font-family: var(--font-sans);
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          color: #6b7280;
+          margin-top: 10px;
+        }
+
+        /* Collages layout */
+        .editorial-collages-list {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          border-radius: 24px !important; /* Rounded corner design for packages */
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+          gap: 90px;
         }
 
-        /* Enforce rounded corners on packaging image boxes */
-        .package-photo-panel {
+        .editorial-row {
           position: relative;
-          overflow: hidden;
-          border-radius: 24px !important;
-          border: 1px solid var(--glass-border);
-          aspect-ratio: 1.2/1;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          min-height: 240px;
         }
 
-        .pkg-image {
+        /* Alignment positions for staggered pill collage */
+        .align-left {
+          justify-content: flex-start;
+        }
+
+        .align-right {
+          justify-content: flex-end;
+        }
+
+        /* Olive Muted Green Pill Card */
+        .olive-pill-card {
+          width: 72%;
+          background: #2b352e !important; /* Deep muted olive green */
+          border: 1px solid rgba(255, 255, 255, 0.05) !important;
+          color: #ffffff;
+          padding: 40px 60px;
+          border-radius: 100px !important; /* Forces perfect Pill shape */
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+          position: relative;
+          z-index: 5;
+          transition: transform 0.4s ease;
+        }
+
+        .olive-pill-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+        }
+
+        .card-editorial-content {
+          max-width: 65%;
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+        }
+
+        /* Align text columns based on row alignment */
+        .align-right .card-editorial-content {
+          margin-left: auto;
+          margin-right: 0;
+          text-align: right;
+          align-items: flex-end;
+        }
+
+        .pkg-pill-label {
+          font-size: 20px;
+          font-weight: 500;
+          letter-spacing: -0.02em;
+          color: #ffffff;
+          opacity: 0.9;
+        }
+
+        .pkg-pill-title {
+          font-size: 28px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: -0.03em;
+          margin-top: 2px;
+          margin-bottom: 12px;
+        }
+
+        .pkg-pill-details {
+          font-size: 11px;
+          color: rgba(255, 255, 255, 0.5);
+          line-height: 1.6;
+          margin-bottom: 18px;
+          letter-spacing: 0.01em;
+          max-width: 320px;
+        }
+
+        .pkg-pill-price {
+          font-size: 28px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: -0.02em;
+        }
+
+        /* Black and White Cutout Photo styling overlapping cards */
+        .overlapping-photo-wrapper {
+          position: absolute;
+          width: 38%;
+          aspect-ratio: 1.1/1;
+          z-index: 10;
+          overflow: hidden;
+          border-radius: 36px !important; /* Beautiful rounded border collage */
+          border: 6px solid #f3f3f1; /* Magazine frame border */
+          box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+        }
+
+        /* Alternating placements breaking card boundaries */
+        .align-left .overlapping-photo-wrapper {
+          right: 4%;
+          top: -24px;
+        }
+
+        .align-right .overlapping-photo-wrapper {
+          left: 4%;
+          top: -24px;
+        }
+
+        .bw-cutout-photo {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
-          border-radius: 24px !important;
+          filter: grayscale(100%) contrast(112%) brightness(96%);
+          border-radius: 36px !important;
+          transition: transform 0.6s ease;
         }
 
-        .pkg-title {
-          font-size: 24px;
-          font-weight: 600;
-          color: #ffffff;
-          margin-bottom: 2px;
-          letter-spacing: -0.01em;
+        .overlapping-photo-wrapper:hover .bw-cutout-photo {
+          transform: scale(1.03);
         }
 
-        .pkg-subtitle {
-          font-size: 11px;
-          color: var(--accent-yellow);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          display: block;
-          margin-bottom: 4px;
-        }
-
-        .pkg-details-desc {
-          font-size: 11px;
-          color: rgba(255, 255, 255, 0.45);
-          margin-bottom: 16px;
-        }
-
-        .pkg-features {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-          font-size: 13px;
-          color: rgba(255, 255, 255, 0.75);
-          margin-bottom: 20px;
-        }
-
-        .pkg-features li {
-          position: relative;
-          padding-left: 14px;
-        }
-
-        .pkg-features li::before {
-          content: "•";
-          position: absolute;
-          left: 0;
-          color: var(--accent-yellow);
-        }
-
-        .panel-footer {
-          margin-top: auto;
-          display: flex;
-          align-items: baseline;
-        }
-
-        .pkg-price-amount {
-          font-size: 24px;
-          font-weight: 700;
-          color: #ffffff;
-        }
-
-        .pkg-price-suffix {
-          font-size: 12px;
-          color: rgba(255, 255, 255, 0.5);
-          margin-left: 4px;
-        }
-
-        .mobile-only {
-          display: none;
-        }
-
-        /* Order layout for alternate rows */
-        .row-normal .package-card-panel { order: 1; }
-        .row-normal .package-photo-panel { order: 2; }
-        .row-reverse .package-card-panel { order: 2; }
-        .row-reverse .package-photo-panel { order: 1; }
-
+        /* Responsive Styles for Mobile Portables */
         @media (max-width: 768px) {
-          .package-row {
-            /* KEEP the 2-column side-by-side grid layout on mobile screens */
-            grid-template-columns: 1.15fr 1fr !important;
-            gap: 10px;
-          }
-          
-          .glass-dark-panel {
-            padding: 16px 14px;
-            border-radius: 18px !important;
+          .pricing-section-editorial {
+            padding: 50px 16px;
           }
 
-          .package-photo-panel {
-            border-radius: 18px !important;
-            aspect-ratio: 1.05/1;
+          .swiss-title {
+            font-size: 34px;
           }
 
-          .pkg-image {
-            border-radius: 18px !important;
+          .editorial-header {
+            margin-bottom: 40px;
+            padding-left: 5px;
           }
 
-          .desktop-only {
-            display: none !important;
+          .editorial-collages-list {
+            gap: 60px;
           }
 
-          .mobile-only {
-            display: block;
+          .editorial-row {
+            min-height: auto;
           }
 
-          .pkg-title {
-            font-size: 15px;
-            line-height: 1.2;
-            margin-bottom: 1px;
+          /* Keeping the side-by-side overlap on mobile, just scaled down */
+          .olive-pill-card {
+            width: 78%;
+            padding: 24px 28px;
+            border-radius: 40px !important; /* Proportional pill shape on mobile */
           }
 
-          .pkg-subtitle {
-            font-size: 9px;
-            margin-bottom: 2px;
+          .card-editorial-content {
+            max-width: 58%;
           }
 
-          .pkg-details-desc {
+          .pkg-pill-label {
+            font-size: 14px;
+          }
+
+          .pkg-pill-title {
+            font-size: 16px;
+            margin-bottom: 6px;
+          }
+
+          .pkg-pill-details {
             font-size: 9px;
             margin-bottom: 8px;
-            line-height: 1.2;
-          }
-
-          .pkg-specs-mobile {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 12px;
             line-height: 1.3;
           }
 
-          .pkg-price-amount {
-            font-size: 16px;
+          .pkg-pill-price {
+            font-size: 18px;
           }
 
-          .pkg-price-suffix {
-            font-size: 10px;
+          .overlapping-photo-wrapper {
+            width: 42%;
+            border-width: 3px;
+            border-radius: 18px !important;
           }
 
-          .package-section-title {
-            font-size: 26px;
+          .bw-cutout-photo {
+            border-radius: 18px !important;
+          }
+
+          .align-left .overlapping-photo-wrapper {
+            right: 0%;
+            top: -12px;
+          }
+
+          .align-right .overlapping-photo-wrapper {
+            left: 0%;
+            top: -12px;
           }
         }
       `}</style>

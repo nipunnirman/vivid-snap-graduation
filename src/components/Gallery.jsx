@@ -417,6 +417,9 @@ export default function Gallery({ onSelectImage, favorites }) {
           .gallery-controls {
             flex-direction: column;
             align-items: stretch;
+            gap: 10px;
+            padding: 12px 16px;
+            border-radius: 24px !important;
           }
           .search-box {
             width: 100%;
@@ -435,10 +438,41 @@ export default function Gallery({ onSelectImage, favorites }) {
             grid-gap: 6px;
           }
           .gallery-controls {
-            padding: 12px;
+            padding: 8px 12px;
+            margin-bottom: 20px;
+            top: 10px;
+            gap: 8px;
+            border-radius: 20px !important;
+          }
+          .search-box input {
+            padding: 6px 12px 6px 32px;
+            font-size: 12px;
+            border-radius: 20px !important;
+          }
+          .search-icon {
+            left: 10px;
+            width: 14px;
+            height: 14px;
           }
           .category-tabs {
-            justify-content: center;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            justify-content: flex-start;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2px;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+          }
+          .category-tabs::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Chrome/Safari */
+          }
+          .tab {
+            font-size: 11px;
+            padding: 6px 12px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            border-radius: 20px !important;
           }
         }
       `}</style>
