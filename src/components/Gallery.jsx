@@ -212,11 +212,11 @@ export default function Gallery({ onSelectImage, favorites }) {
           flex-wrap: wrap;
           gap: 16px;
           border-radius: 40px !important; /* Forces rounded shape */
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid var(--glass-border);
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
+          background: rgba(255, 255, 255, 0.65);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
         }
 
         .search-box {
