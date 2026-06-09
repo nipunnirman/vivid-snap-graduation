@@ -37,11 +37,11 @@ const FacebookIcon = ({ size = 20, ...props }) => (
 
 export default function Contact() {
   const handleInstagramClick = () => {
-    window.open('https://instagram.com/vivid_snaps_rajana', '_blank');
+    window.open('https://www.instagram.com/rajashri_kid_/', '_blank');
   };
 
   const handleFacebookClick = () => {
-    window.open('https://facebook.com/people/Vivid-Snaps-By-Rajana/100092102148101/', '_blank');
+    window.open('https://web.facebook.com/rajanahtr/?_rdc=1&_rdr', '_blank');
   };
 
   const handleCall = () => {

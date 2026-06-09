@@ -16,7 +16,7 @@ export default function Hero() {
       {/* One large, key horizontal photo with sharp box shapes */}
       <div className="hero-single-photo">
         <img 
-          src="/Highlights/RJN02163(1).jpg" 
+          src="/Highlights/RJN06808.jpg" 
           alt="Graduation Showcase Hero" 
           className="hero-img" 
         />
