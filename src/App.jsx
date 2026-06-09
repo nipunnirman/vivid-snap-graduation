@@ -152,7 +152,7 @@ function App() {
           margin: 60px 24px 24px;
           padding: 60px 40px 30px;
           border-radius: 24px;
-          background: rgba(18, 18, 24, 0.4);
+          background: rgba(249, 250, 251, 0.6);
         }
 
         .footer-content {
@@ -178,11 +178,11 @@ function App() {
         }
 
         .footer-logo .logo-icon {
-          color: var(--accent-purple);
+          color: var(--accent-yellow);
         }
 
         .footer-logo .highlight {
-          color: var(--accent-purple);
+          color: var(--accent-yellow);
           font-weight: 300;
         }
 
@@ -209,7 +209,7 @@ function App() {
           font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: var(--accent-gold);
+          color: var(--accent-yellow);
           margin-bottom: 8px;
         }
 
@@ -247,13 +247,13 @@ function App() {
           color: var(--text-primary);
           cursor: pointer;
           z-index: 90;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         .scroll-top-btn:hover {
-          background: var(--accent-purple);
+          background: var(--accent-yellow);
           color: #fff;
-          border-color: var(--accent-purple);
+          border-color: var(--accent-yellow);
           transform: translateY(-3px);
         }
 

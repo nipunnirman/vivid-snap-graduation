@@ -265,19 +265,19 @@ export default function Contact({ selectedPackage }) {
           width: 50px;
           height: 50px;
           border-radius: 12px;
-          background: rgba(157, 80, 255, 0.1);
-          border: 1px solid rgba(157, 80, 255, 0.2);
+          background: rgba(217, 119, 6, 0.1);
+          border: 1px solid rgba(217, 119, 6, 0.2);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: var(--accent-purple);
+          color: var(--accent-yellow);
           transition: all 0.3s ease;
         }
 
         .method-card:hover .method-icon-wrapper {
-          background: var(--accent-purple);
+          background: var(--accent-yellow);
           color: #fff;
-          box-shadow: 0 0 15px rgba(157, 80, 255, 0.4);
+          box-shadow: 0 0 15px rgba(217, 119, 6, 0.4);
         }
 
         .method-details {
@@ -301,7 +301,7 @@ export default function Contact({ selectedPackage }) {
 
         .contact-form-container {
           padding: 40px;
-          background: rgba(18, 18, 24, 0.5);
+          background: rgba(255, 255, 255, 0.65);
         }
 
         .form-title {
@@ -333,7 +333,7 @@ export default function Contact({ selectedPackage }) {
 
         input, select, textarea {
           padding: 12px 16px;
-          background: rgba(255, 255, 255, 0.04);
+          background: rgba(0, 0, 0, 0.02);
           border: 1px solid var(--glass-border);
           border-radius: 8px;
           color: var(--text-primary);
@@ -344,9 +344,9 @@ export default function Contact({ selectedPackage }) {
         }
 
         input:focus, select:focus, textarea:focus {
-          border-color: var(--accent-purple);
-          background: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 0 10px rgba(157, 80, 255, 0.2);
+          border-color: var(--accent-yellow);
+          background: rgba(0, 0, 0, 0.04);
+          box-shadow: 0 0 10px rgba(217, 119, 6, 0.2);
         }
 
         select option {
