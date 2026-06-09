@@ -7,7 +7,7 @@ export default function Pricing() {
       name: 'Package One',
       title: 'Individual Session',
       price: '10,000 LKR',
-      photo: '/Highlights/RJN00272.jpg',
+      photo: '/Highlights/RJN09611.jpg',
       details: 'In our studio • 60 minute session • 20 edited images • online gallery • print release'
     },
     {
@@ -24,7 +24,7 @@ export default function Pricing() {
       name: 'Package Three',
       title: 'Love Story Session',
       price: '14,000 LKR',
-      photo: '/Highlights/RJN01978.jpg',
+      photo: '/Highlights/RJN08823.jpg',
       details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
     }
   ];
