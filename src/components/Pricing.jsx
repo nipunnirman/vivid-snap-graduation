@@ -235,7 +235,6 @@ export default function Pricing() {
           height: 100%;
           object-fit: cover;
           display: block;
-          filter: grayscale(100%) contrast(112%) brightness(96%);
           border-radius: 36px !important;
           transition: transform 0.6s ease;
         }
