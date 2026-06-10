@@ -3,11 +3,12 @@ import { Camera } from 'lucide-react';
 
 const heroImages = [
   "/Highlights/RJN06808.jpg",
-  "/Highlights/RJN02210.jpg",
+  "/WhatsApp Image 2026-06-11 at 3.45.12 AM (1).jpeg",
   "/Highlights/RJN04217.jpg",
   "/Highlights/RJN04477.jpg",
   "/Highlights/RJN04758.jpg",
-  "/Highlights/RJN09034.jpg"
+  "/Highlights/RJN09034.jpg",
+  "/WhatsApp Image 2026-06-11 at 3.45.03 AM.jpeg"
 ];
 
 export default function Hero() {
@@ -32,16 +33,22 @@ export default function Hero() {
         "The stars have brought you here. Let us guide you to what's beyond."
       </p>
 
-      {/* Slideshow container with sharp box shapes */}
+      {/* Sliding carousel container with sharp box shapes */}
       <div className="hero-single-photo">
-        {heroImages.map((src, index) => (
-          <img 
-            key={src}
-            src={src} 
-            alt={`Graduation Showcase Hero ${index + 1}`} 
-            className={`hero-img ${index === currentIndex ? 'active' : ''}`} 
-          />
-        ))}
+        <div 
+          className="slideshow-track"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {heroImages.map((src, index) => (
+            <div className="slide-wrapper" key={src}>
+              <img 
+                src={src} 
+                alt={`Graduation Showcase Hero ${index + 1}`} 
+                className="hero-img" 
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       <style>{`
@@ -92,20 +99,24 @@ export default function Hero() {
           position: relative;
         }
 
+        .slideshow-track {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          transition: transform 1s ease-in-out;
+        }
+
+        .slide-wrapper {
+          flex: 0 0 100%;
+          width: 100%;
+          height: 100%;
+        }
+
         .hero-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
-          position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0;
-          transition: opacity 1.5s ease-in-out;
-        }
-
-        .hero-img.active {
-          opacity: 1;
         }
 
         @media (max-width: 768px) {

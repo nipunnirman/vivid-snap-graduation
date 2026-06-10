@@ -36,9 +36,6 @@ export default function Pricing() {
         {/* Header */}
         <div className="editorial-header">
           <h2 className="swiss-title">Photography Packages</h2>
-          <div className="swiss-subcategories">
-            EVENTS / FASHION / CREATIVITY / WEDDINGS
-          </div>
         </div>
 
         {/* Staggered Pill Collages */}
