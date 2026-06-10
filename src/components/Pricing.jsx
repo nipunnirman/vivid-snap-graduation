@@ -295,23 +295,27 @@ export default function Pricing() {
           }
 
           .overlapping-photo-wrapper {
-            width: 52%;
+            width: 48%;
             border-width: 3px;
-            border-radius: 18px !important;
+            border-radius: 20px !important;
+            aspect-ratio: auto; /* Remove fixed aspect ratio */
+            height: auto; /* Let top and bottom dictate height */
           }
 
           .bw-cutout-photo {
-            border-radius: 18px !important;
+            border-radius: 20px !important;
           }
 
           .align-left .overlapping-photo-wrapper {
-            right: -4%;
+            right: -2%;
             top: -12px;
+            bottom: -12px;
           }
 
           .align-right .overlapping-photo-wrapper {
-            left: -4%;
+            left: -2%;
             top: -12px;
+            bottom: -12px;
           }
         }
       `}</style>
