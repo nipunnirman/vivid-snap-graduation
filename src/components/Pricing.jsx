@@ -16,7 +16,7 @@ export default function Pricing() {
       title: 'Graduate Session',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
-      photo: '/Highlights/RJN04877.jpg',
+      photo: '/Highlights/RJN04758.jpg',
       details: 'One location • 60 minute session • 20 edited images • online gallery • print release'
     },
     {
