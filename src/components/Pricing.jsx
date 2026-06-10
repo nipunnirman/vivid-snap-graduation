@@ -274,7 +274,7 @@ export default function Pricing() {
           }
 
           .card-editorial-content {
-            max-width: 58%;
+            max-width: 52%;
           }
 
           .pkg-pill-label {
@@ -297,7 +297,7 @@ export default function Pricing() {
           }
 
           .overlapping-photo-wrapper {
-            width: 42%;
+            width: 55%;
             border-width: 3px;
             border-radius: 18px !important;
           }
