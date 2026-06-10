@@ -7,7 +7,7 @@ export default function Pricing() {
       name: 'Package One',
       title: 'Individual Session',
       price: '10,000 LKR',
-      photo: '/Highlights/RJN09611.jpg',
+      photo: '/WhatsApp Image 2026-06-11 at 3.45.13 AM.jpeg',
       details: 'In our studio • 60 minute session • 20 edited images • online gallery • print release'
     },
     {
@@ -16,7 +16,7 @@ export default function Pricing() {
       title: 'Graduate Session',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
-      photo: '/Highlights/RJN04758.jpg',
+      photo: '/WhatsApp Image 2026-06-11 at 3.45.08 AM.jpeg',
       details: 'One location • 60 minute session • 20 edited images • online gallery • print release'
     },
     {
@@ -24,7 +24,7 @@ export default function Pricing() {
       name: 'Package Three',
       title: 'Love Story Session',
       price: '14,000 LKR',
-      photo: '/Highlights/RJN08823.jpg',
+      photo: '/WhatsApp Image 2026-06-11 at 3.45.03 AM.jpeg',
       details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
     }
   ];
