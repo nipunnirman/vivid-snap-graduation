@@ -5,27 +5,27 @@ export default function Pricing() {
     {
       id: 'individual',
       name: 'Package One',
-      title: 'Individual Session',
+      title: 'Individual Package',
       price: '10,000 LKR',
       photo: '/WhatsApp Image 2026-06-11 at 3.45.13 AM.jpeg',
-      details: 'In our studio • 60 minute session • 20 edited images • online gallery • print release'
+      details: 'Stunning casual photo session • Professionally edited softcopies'
     },
     {
       id: 'graduate',
       name: 'Package Two',
-      title: 'Graduate Session',
+      title: 'Graduate Session (Two and more grads)',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
       photo: '/WhatsApp Image 2026-06-11 at 3.45.08 AM.jpeg',
-      details: 'One location • 60 minute session • 20 edited images • online gallery • print release'
+      details: 'Stunning casual photo session • Professionally edited softcopies • Includes natural interactions and shared moments between the graduates'
     },
     {
       id: 'lovestory',
       name: 'Package Three',
-      title: 'Love Story Session',
+      title: 'Love Story',
       price: '14,000 LKR',
       photo: '/WhatsApp Image 2026-06-11 at 3.45.03 AM.jpeg',
-      details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
+      details: 'Romantic and relaxed casual photo session • Professionally edited softcopies'
     }
   ];
 
@@ -192,12 +192,12 @@ export default function Pricing() {
         }
 
         .pkg-pill-details {
-          font-size: 11px;
-          color: rgba(255, 255, 255, 0.5);
+          font-size: 15px;
+          color: rgba(255, 255, 255, 0.8);
           line-height: 1.6;
           margin-bottom: 18px;
           letter-spacing: 0.01em;
-          max-width: 320px;
+          max-width: 380px;
         }
 
         .pkg-pill-price {
@@ -210,7 +210,7 @@ export default function Pricing() {
         /* Black and White Cutout Photo styling overlapping cards */
         .overlapping-photo-wrapper {
           position: absolute;
-          width: 38%;
+          width: 42%;
           aspect-ratio: 1.1/1;
           z-index: 10;
           overflow: hidden;
@@ -268,13 +268,13 @@ export default function Pricing() {
 
           /* Keeping the side-by-side overlap on mobile, just scaled down */
           .olive-pill-card {
-            width: 78%;
-            padding: 24px 28px;
+            width: 88%;
+            padding: 24px 24px;
             border-radius: 40px !important; /* Proportional pill shape on mobile */
           }
 
           .card-editorial-content {
-            max-width: 52%;
+            max-width: 55%;
           }
 
           .pkg-pill-label {
@@ -287,9 +287,10 @@ export default function Pricing() {
           }
 
           .pkg-pill-details {
-            font-size: 9px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 8px;
-            line-height: 1.3;
+            line-height: 1.4;
           }
 
           .pkg-pill-price {
@@ -297,7 +298,7 @@ export default function Pricing() {
           }
 
           .overlapping-photo-wrapper {
-            width: 55%;
+            width: 52%;
             border-width: 3px;
             border-radius: 18px !important;
           }
@@ -307,12 +308,12 @@ export default function Pricing() {
           }
 
           .align-left .overlapping-photo-wrapper {
-            right: 0%;
+            right: -4%;
             top: -12px;
           }
 
           .align-right .overlapping-photo-wrapper {
-            left: 0%;
+            left: -4%;
             top: -12px;
           }
         }

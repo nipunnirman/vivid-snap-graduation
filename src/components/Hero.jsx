@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Camera } from 'lucide-react';
 
+const heroImages = [
+  "/Highlights/RJN06808.jpg",
+  "/Highlights/RJN02210.jpg",
+  "/Highlights/RJN04217.jpg",
+  "/Highlights/RJN04477.jpg",
+  "/Highlights/RJN04758.jpg",
+  "/Highlights/RJN09034.jpg"
+];
+
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <header className="brand-header fade-in">
       <div className="brand-logo">
@@ -13,13 +32,16 @@ export default function Hero() {
         "The stars have brought you here. Let us guide you to what's beyond."
       </p>
 
-      {/* One large, key horizontal photo with sharp box shapes */}
+      {/* Slideshow container with sharp box shapes */}
       <div className="hero-single-photo">
-        <img 
-          src="/Highlights/RJN06808.jpg" 
-          alt="Graduation Showcase Hero" 
-          className="hero-img" 
-        />
+        {heroImages.map((src, index) => (
+          <img 
+            key={src}
+            src={src} 
+            alt={`Graduation Showcase Hero ${index + 1}`} 
+            className={`hero-img ${index === currentIndex ? 'active' : ''}`} 
+          />
+        ))}
       </div>
 
       <style>{`
@@ -67,10 +89,7 @@ export default function Hero() {
           background-color: var(--bg-secondary);
           /* Force sharp square box-shape for photos */
           border-radius: 0 !important;
-        }
-
-        .hero-single-photo img {
-          border-radius: 0 !important;
+          position: relative;
         }
 
         .hero-img {
@@ -78,6 +97,15 @@ export default function Hero() {
           height: 100%;
           object-fit: cover;
           display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-img.active {
+          opacity: 1;
         }
 
         @media (max-width: 768px) {
