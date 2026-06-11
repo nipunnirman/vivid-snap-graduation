@@ -24,7 +24,7 @@ export default function Pricing() {
       name: 'Package Three',
       title: 'Love Story',
       price: '14,000 LKR',
-      photo: '/WhatsApp Image 2026-06-11 at 3.45.03 AM.jpeg',
+      photo: '/Highlights/RJN01241.jpg',
       details: 'Romantic and relaxed casual photo session • Professionally edited softcopies'
     }
   ];
