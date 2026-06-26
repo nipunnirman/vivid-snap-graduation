@@ -22,10 +22,10 @@ export default function Pricing() {
     {
       id: 'lovestory',
       name: 'Package Three',
-      title: 'Love Story',
-      price: '14,000 LKR',
-      photo: '/Highlights/RJN01241.jpg',
-      details: 'Romantic and relaxed casual photo session • Professionally edited softcopies'
+      title: 'Love Story Session',
+      price: '16,000 LKR',
+      photo: '/Highlights/RJN08823.jpg',
+      details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
     }
   ];
 
