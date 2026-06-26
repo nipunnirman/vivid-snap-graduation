@@ -29,6 +29,25 @@ export default function Pricing() {
     }
   ];
 
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, {
+      threshold: 0.45 // Trigger when 45% of the card is visible on screen
+    });
+
+    const rows = document.querySelectorAll('.editorial-row');
+    rows.forEach(row => observer.observe(row));
+
+    return () => {
+      rows.forEach(row => observer.unobserve(row));
+    };
+  }, []);
+
   return (
     <section id="pricing" className="pricing-section-editorial">
       <div className="editorial-container">
@@ -152,11 +171,11 @@ export default function Pricing() {
           transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .align-left .olive-pill-card {
+        .align-left.in-view .olive-pill-card {
           animation: slideInFromLeft 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .align-right .olive-pill-card {
+        .align-right.in-view .olive-pill-card {
           animation: slideInFromRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
@@ -226,13 +245,13 @@ export default function Pricing() {
           opacity: 0; /* Start hidden for animation */
         }
 
-        .align-left .overlapping-photo-wrapper {
+        .align-left.in-view .overlapping-photo-wrapper {
           right: 4%;
           top: -24px;
           animation: slideInFromRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .align-right .overlapping-photo-wrapper {
+        .align-right.in-view .overlapping-photo-wrapper {
           left: 4%;
           top: -24px;
           animation: slideInFromLeft 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
