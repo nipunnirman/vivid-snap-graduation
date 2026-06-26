@@ -48,7 +48,7 @@ export default function Pricing() {
                 className={`editorial-row ${isEven ? 'align-left' : 'align-right'}`}
               >
                 {/* Olive Pill Card */}
-                <div className="olive-pill-card glass-panel fade-in">
+                <div className="olive-pill-card glass-panel">
                   <div className="card-editorial-content">
                     <span className="pkg-pill-label">{pkg.name}</span>
                     <h3 className="pkg-pill-title">{pkg.title}</h3>
@@ -58,7 +58,7 @@ export default function Pricing() {
                 </div>
 
                 {/* Overlapping Black & White Photo cutout */}
-                <div className="overlapping-photo-wrapper fade-in">
+                <div className="overlapping-photo-wrapper">
                   <img 
                     src={pkg.photo} 
                     alt={pkg.title} 
@@ -148,7 +148,16 @@ export default function Pricing() {
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
           position: relative;
           z-index: 5;
-          transition: transform 0.4s ease;
+          opacity: 0; /* Start hidden for animation */
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .align-left .olive-pill-card {
+          animation: slideInFromLeft 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .align-right .olive-pill-card {
+          animation: slideInFromRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .olive-pill-card:hover {
@@ -214,17 +223,19 @@ export default function Pricing() {
           border-radius: 36px !important; /* Beautiful rounded border collage */
           border: 6px solid #f3f3f1; /* Magazine frame border */
           box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+          opacity: 0; /* Start hidden for animation */
         }
 
-        /* Alternating placements breaking card boundaries */
         .align-left .overlapping-photo-wrapper {
           right: 4%;
           top: -24px;
+          animation: slideInFromRight 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .align-right .overlapping-photo-wrapper {
           left: 4%;
           top: -24px;
+          animation: slideInFromLeft 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .bw-cutout-photo {
@@ -238,6 +249,29 @@ export default function Pricing() {
 
         .overlapping-photo-wrapper:hover .bw-cutout-photo {
           transform: scale(1.03);
+        }
+
+        /* Keyframes for sliding into space from outside */
+        @keyframes slideInFromLeft {
+          from {
+            transform: translateX(-150px);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideInFromRight {
+          from {
+            transform: translateX(150px);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
         }
 
         /* Responsive Styles for Mobile Portables */
