@@ -37,7 +37,7 @@ export default function Pricing() {
         }
       });
     }, {
-      threshold: 0.45 // Trigger when 45% of the card is visible on screen
+      threshold: 0.5 // Trigger when 50% of the card is visible
     });
 
     const rows = document.querySelectorAll('.editorial-row');
