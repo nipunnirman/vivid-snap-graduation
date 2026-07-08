@@ -7,6 +7,7 @@ export default function Gallery({ onSelectImage, favorites }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [visibleCount, setVisibleCount] = useState(24);
   const [gridCols, setGridCols] = useState(3);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   // Group images into virtual categories based on their filenames for portfolio structure
   const categorizedImages = useMemo(() => {
@@ -51,7 +52,11 @@ export default function Gallery({ onSelectImage, favorites }) {
   }, [filteredImages, visibleCount]);
 
   const loadMore = () => {
-    setVisibleCount(prev => prev + 24);
+    setIsLoadingMore(true);
+    setTimeout(() => {
+      setVisibleCount(prev => prev + 24);
+      setIsLoadingMore(false);
+    }, 650);
   };
 
   return (
@@ -148,6 +153,7 @@ export default function Gallery({ onSelectImage, favorites }) {
                 alt={img.name} 
                 loading="lazy" 
                 className="gallery-img"
+                onLoad={(e) => e.target.classList.add('loaded')}
               />
               <div className="item-overlay">
                 <span className="photo-label">{img.name.split('.')[0]}</span>
@@ -169,8 +175,16 @@ export default function Gallery({ onSelectImage, favorites }) {
       {/* Load More Button */}
       {filteredImages.length > visibleCount && (
         <div className="load-more-container">
-          <button className="btn btn-secondary" onClick={loadMore}>
-            Load More Photos ({filteredImages.length - visibleCount} left)
+          <button 
+            className="btn btn-secondary load-more-btn" 
+            onClick={loadMore}
+            disabled={isLoadingMore}
+          >
+            {isLoadingMore ? (
+              <span className="spinner-loading"></span>
+            ) : (
+              `Load More Photos (${filteredImages.length - visibleCount} left)`
+            )}
           </button>
         </div>
       )}
@@ -341,7 +355,12 @@ export default function Gallery({ onSelectImage, favorites }) {
           width: 100%;
           height: auto;
           display: block;
-          transition: transform 0.4s ease;
+          opacity: 0;
+          transition: transform 0.4s ease, opacity 0.5s ease-in-out;
+        }
+
+        .gallery-img.loaded {
+          opacity: 1;
         }
 
         .gallery-item-card:hover .gallery-img {
@@ -402,7 +421,32 @@ export default function Gallery({ onSelectImage, favorites }) {
         .load-more-container {
           display: flex;
           justify-content: center;
-          margin-top: 20px;
+          margin-top: 30px;
+        }
+
+        .load-more-btn {
+          min-width: 220px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          transition: all 0.3s ease;
+        }
+
+        .spinner-loading {
+          width: 20px;
+          height: 20px;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          border-top-color: #ffffff;
+          border-radius: 50%;
+          animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         @media (max-width: 1024px) {
