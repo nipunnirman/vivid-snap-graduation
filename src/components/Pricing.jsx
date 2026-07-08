@@ -5,18 +5,18 @@ export default function Pricing() {
     {
       id: 'individual',
       name: 'Package One',
-      title: 'Individual Package',
+      title: 'Individual Session',
       price: '10,000 LKR',
-      photo: '/WhatsApp Image 2026-06-11 at 3.45.13 AM.jpeg',
+      photo: '/Highlights/RJN09611.jpg',
       details: 'Stunning casual photo session • Professionally edited softcopies'
     },
     {
       id: 'graduate',
       name: 'Package Two',
-      title: 'Graduate Session (Two and more grads)',
+      title: 'Graduate Session',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
-      photo: '/WhatsApp Image 2026-06-11 at 3.45.08 AM.jpeg',
+      photo: '/Highlights/RJN04877.jpg',
       details: 'Stunning casual photo session • Professionally edited softcopies • Includes natural interactions and shared moments between the graduates'
     },
     {
@@ -25,7 +25,7 @@ export default function Pricing() {
       title: 'Love Story Session',
       price: '16,000 LKR',
       photo: '/Highlights/RJN01241.jpg',
-      details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
+      details: 'Romantic and relaxed casual photo session • Professionally edited softcopies'
     }
   ];
 
@@ -55,6 +55,9 @@ export default function Pricing() {
         {/* Header */}
         <div className="editorial-header">
           <h2 className="swiss-title">Photography Packages</h2>
+          <div className="swiss-subcategories">
+            EVENTS / FASHION / CREATIVITY / WEDDINGS
+          </div>
         </div>
 
         {/* Staggered Pill Collages */}
@@ -71,7 +74,13 @@ export default function Pricing() {
                   <div className="card-editorial-content">
                     <span className="pkg-pill-label">{pkg.name}</span>
                     <h3 className="pkg-pill-title">{pkg.title}</h3>
-                    <p className="pkg-pill-details">{pkg.details}</p>
+                    <div className="pkg-pill-details">
+                      {pkg.details.split('•').map((line, lIdx) => (
+                        <div key={lIdx} className="details-line">
+                          <span className="bullet-dot">•</span> {line.trim()}
+                        </div>
+                      ))}
+                    </div>
                     <span className="pkg-pill-price">{pkg.price}</span>
                   </div>
                 </div>
@@ -217,12 +226,27 @@ export default function Pricing() {
         }
 
         .pkg-pill-details {
-          font-size: 15px;
-          color: rgba(255, 255, 255, 0.8);
-          line-height: 1.6;
+          margin-top: 4px;
           margin-bottom: 18px;
-          letter-spacing: 0.01em;
           max-width: 380px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .details-line {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.4;
+          letter-spacing: 0.01em;
+          display: flex;
+          align-items: flex-start;
+          gap: 6px;
+        }
+
+        .bullet-dot {
+          color: var(--accent-yellow);
+          font-size: 14px;
         }
 
         .pkg-pill-price {
@@ -337,10 +361,26 @@ export default function Pricing() {
           }
 
           .pkg-pill-details {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2px;
             margin-bottom: 8px;
-            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+          }
+
+          .details-line {
+            font-size: 9px;
+            line-height: 1.25;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+            text-align: left;
+          }
+
+          .bullet-dot {
+            font-size: 9px;
+            color: var(--accent-yellow);
           }
 
           .pkg-pill-price {
