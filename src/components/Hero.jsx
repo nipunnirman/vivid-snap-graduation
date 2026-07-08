@@ -1,31 +1,97 @@
 import React from 'react';
+import { Camera } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <div className="hero-banner-only fade-in">
-      <img 
-        src="/3.png" 
-        alt="Vivid Snaps Graduation Banner" 
-        className="hero-banner-img" 
-      />
+    <header className="brand-header fade-in">
+      <div className="brand-logo">
+        <Camera className="logo-icon" size={26} />
+        <span className="serif-text font-bold">VIVID <span className="highlight">SNAPS</span></span>
+      </div>
+      
+      <p className="brand-slogan">
+        "The stars have brought you here. Let us guide you to what's beyond."
+      </p>
+
+      {/* Static banner image replacing the previous slideshow photo */}
+      <div className="hero-single-photo">
+        <img 
+          src="/3.png" 
+          alt="Vivid Snaps Graduation Banner" 
+          className="hero-img" 
+        />
+      </div>
+
       <style>{`
-        .hero-banner-only {
-          width: 100%;
+        .brand-header {
+          text-align: center;
+          padding: 40px 16px 10px;
           max-width: 1200px;
           margin: 0 auto;
-          padding: 20px 16px 10px;
-          box-sizing: border-box;
         }
 
-        .hero-banner-img {
+        .brand-logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          font-size: 26px;
+          font-weight: 700;
+          color: var(--text-primary);
+          margin-bottom: 8px;
+        }
+
+        .logo-icon {
+          color: var(--accent-yellow);
+        }
+
+        .highlight {
+          color: var(--accent-yellow);
+          font-weight: 300;
+        }
+
+        .brand-slogan {
+          font-family: var(--font-serif);
+          font-style: italic;
+          font-size: 15px;
+          color: var(--text-secondary);
+          margin-bottom: 24px;
+          letter-spacing: 0.02em;
+        }
+
+        .hero-single-photo {
           width: 100%;
-          height: auto;
-          display: block;
+          aspect-ratio: 16/9;
+          overflow: hidden;
           border: 1px solid var(--glass-border);
+          background-color: var(--bg-secondary);
           /* Force sharp square box-shape for photos */
           border-radius: 0 !important;
         }
+
+        .hero-single-photo img {
+          border-radius: 0 !important;
+        }
+
+        .hero-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        @media (max-width: 768px) {
+          .brand-logo {
+            font-size: 22px;
+          }
+          .brand-slogan {
+            font-size: 13px;
+          }
+          .hero-single-photo {
+            aspect-ratio: 16/10;
+          }
+        }
       `}</style>
-    </div>
+    </header>
   );
 }
