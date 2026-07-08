@@ -310,36 +310,37 @@ export default function Gallery({ onSelectImage, favorites }) {
 
         /* Gallery Grid Layouts */
         .gallery-grid {
-          display: grid;
-          grid-gap: 8px; /* Tighter gap for box grid style */
+          display: block;
+          column-gap: 8px; /* Tighter gap for box grid style */
           margin-bottom: 40px;
         }
 
         .cols-2 {
-          grid-template-columns: repeat(2, 1fr);
+          column-count: 2;
         }
 
         .cols-3 {
-          grid-template-columns: repeat(3, 1fr);
+          column-count: 3;
         }
 
         .cols-4 {
-          grid-template-columns: repeat(4, 1fr);
+          column-count: 4;
         }
 
         .gallery-item-card {
           position: relative;
           overflow: hidden;
           cursor: pointer;
-          aspect-ratio: 1/1; /* Square box shape */
+          break-inside: avoid;
+          margin-bottom: 8px;
           background-color: var(--bg-secondary);
           border: 1px solid var(--glass-border);
         }
 
         .gallery-img {
           width: 100%;
-          height: 100%;
-          object-fit: cover;
+          height: auto;
+          display: block;
           transition: transform 0.4s ease;
         }
 
@@ -406,13 +407,13 @@ export default function Gallery({ onSelectImage, favorites }) {
 
         @media (max-width: 1024px) {
           .cols-4 {
-            grid-template-columns: repeat(3, 1fr);
+            column-count: 3;
           }
         }
 
         @media (max-width: 768px) {
           .cols-3, .cols-4 {
-            grid-template-columns: repeat(2, 1fr);
+            column-count: 2;
           }
           .gallery-controls {
             flex-direction: column;
@@ -432,10 +433,14 @@ export default function Gallery({ onSelectImage, favorites }) {
         @media (max-width: 480px) {
           /* Force exactly 2 columns on mobile screens so it displays 2 horizontal photos side-by-side */
           .cols-2, .cols-3, .cols-4 {
-            grid-template-columns: repeat(2, 1fr);
+            column-count: 2;
           }
           .gallery-grid {
-            grid-gap: 6px;
+            column-gap: 4px;
+          }
+          .gallery-item-card {
+            margin-bottom: 4px;
+            border: none;
           }
           .gallery-controls {
             padding: 8px 12px;
