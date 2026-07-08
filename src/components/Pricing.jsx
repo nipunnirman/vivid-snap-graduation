@@ -5,27 +5,27 @@ export default function Pricing() {
     {
       id: 'individual',
       name: 'Package One',
-      title: 'Individual Session',
+      title: 'The Solo Achievement Session',
       price: '10,000 LKR',
       photo: '/Highlights/RJN09611.jpg',
-      details: 'Stunning casual photo session • Professionally edited softcopies'
+      details: 'Capture your milestone with a dedicated, premium spotlight. • The Experience: 1 Full Hour of comprehensive coverage. • The Photos: High-end individual portraits + timeless family & friend group shots. • The Reward: Full gallery of unedited images + 70–80 expertly edited masterpieces on your choice.'
     },
     {
       id: 'graduate',
       name: 'Package Two',
-      title: 'Graduate Session',
+      title: 'The Shared Success Session',
       price: '5,000 LKR',
       priceSuffix: '/ per grad',
       photo: '/Highlights/RJN04877.jpg',
-      details: 'Stunning casual photo session • Professionally edited softcopies • Includes natural interactions and shared moments between the graduates'
+      details: 'Celebrate your hard work alongside your favorite classmates. • The Experience: 20 Minutes of dedicated shooting time per graduate (Min. 2 graduates to book). • The Photos: Individual milestone portraits, family moments, and fun group shots together. • The Reward: Full gallery of unedited images + 40 expertly edited masterpieces on each graduate\'s choice.'
     },
     {
       id: 'lovestory',
       name: 'Package Three',
-      title: 'Love Story Session',
+      title: 'The Milestone Romance Session',
       price: '16,000 LKR',
       photo: '/Highlights/RJN01241.jpg',
-      details: 'Romantic and relaxed casual photo session • Professionally edited softcopies'
+      details: 'Document your academic success and your love story all in one frame. • The Experience: 1 Hour focused on your unique journey. • The Photos: Priority couple portraits with your significant other + essential family & friend shots. • The Reward: Full gallery of unedited images + 70–80 expertly edited masterpieces on your choice.'
     }
   ];
 
@@ -235,9 +235,9 @@ export default function Pricing() {
         }
 
         .details-line {
-          font-size: 14px;
+          font-size: 13px;
           color: rgba(255, 255, 255, 0.85);
-          line-height: 1.4;
+          line-height: 1.35;
           letter-spacing: 0.01em;
           display: flex;
           align-items: flex-start;
