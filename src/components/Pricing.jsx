@@ -24,7 +24,7 @@ export default function Pricing() {
       name: 'Package Three',
       title: 'Love Story Session',
       price: '16,000 LKR',
-      photo: '/Highlights/RJN08823.jpg',
+      photo: '/Highlights/RJN01241.jpg',
       details: 'Two locations • 60 minute session • 20 edited images • online gallery • print release'
     }
   ];
