@@ -6,7 +6,9 @@ export default function Pricing() {
       id: 'individual',
       name: 'Package One',
       title: 'The Solo Achievement Session',
+      originalPrice: '12,000 LKR',
       price: '10,000 LKR',
+      badge: 'For SLIIT GRADA',
       photo: '/WhatsApp Image 2026-06-11 at 3.45.13 AM.jpeg',
       details: 'Capture your milestone with a dedicated, premium spotlight. • The Experience: 1 Full Hour of comprehensive coverage. • The Photos: High-end individual portraits + timeless family & friend group shots. • The Reward: Full gallery of unedited images + 70–80 expertly edited masterpieces on your choice.'
     },
@@ -81,7 +83,15 @@ export default function Pricing() {
                         </div>
                       ))}
                     </div>
-                    <span className="pkg-pill-price">{pkg.price}</span>
+                    <div className="pkg-pill-price-row">
+                      {pkg.originalPrice && (
+                        <span className="pkg-pill-price-cut">{pkg.originalPrice}</span>
+                      )}
+                      <span className="pkg-pill-price">{pkg.price}</span>
+                    </div>
+                    {pkg.badge && (
+                      <span className="pkg-pill-badge">{pkg.badge}</span>
+                    )}
                   </div>
                 </div>
 
@@ -249,11 +259,45 @@ export default function Pricing() {
           font-size: 14px;
         }
 
+        .pkg-pill-price-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .align-right .pkg-pill-price-row {
+          justify-content: flex-end;
+        }
+
+        .pkg-pill-price-cut {
+          font-size: 22px;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.45);
+          letter-spacing: -0.02em;
+          text-decoration: line-through;
+          text-decoration-color: rgba(255, 80, 80, 0.7);
+          text-decoration-thickness: 2px;
+        }
+
         .pkg-pill-price {
           font-size: 28px;
           font-weight: 700;
           color: #ffffff;
           letter-spacing: -0.02em;
+        }
+
+        .pkg-pill-badge {
+          display: inline-block;
+          margin-top: 8px;
+          padding: 5px 16px;
+          background: linear-gradient(135deg, #d4a853, #c49b3a);
+          color: #1a1a1a;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          border-radius: 20px;
         }
 
         /* Black and White Cutout Photo styling overlapping cards */
@@ -383,8 +427,17 @@ export default function Pricing() {
             color: var(--accent-yellow);
           }
 
+          .pkg-pill-price-cut {
+            font-size: 14px;
+          }
+
           .pkg-pill-price {
             font-size: 18px;
+          }
+
+          .pkg-pill-badge {
+            font-size: 9px;
+            padding: 3px 10px;
           }
 
           .overlapping-photo-wrapper {
