@@ -8,7 +8,7 @@ export default function Pricing() {
       title: 'The Solo Achievement Session',
       originalPrice: '12,000 LKR',
       price: '10,000 LKR',
-      badge: 'For SLIIT GRADA',
+      badge: 'For SLIIT GRADS',
       photo: '/WhatsApp Image 2026-06-11 at 3.45.13 AM.jpeg',
       details: 'Capture your milestone with a dedicated, premium spotlight. • The Experience: 1 Full Hour of comprehensive coverage. • The Photos: High-end individual portraits + timeless family & friend group shots. • The Reward: Full gallery of unedited images + 70–80 expertly edited masterpieces on your choice.'
     },
